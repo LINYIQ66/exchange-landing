@@ -134,9 +134,9 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
 .code-block .str { color: #A6E3A1; }
 .code-block .key { color: #F9E2AF; }
 .code-block .url { color: #89DCEB; }
-.copy-btn { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.1); border: none; color: #CDD6F4; padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; opacity: 0; transition: opacity 0.2s; }
-.code-block:hover .copy-btn { opacity: 1; }
-.copy-btn:hover { background: rgba(255,255,255,0.2); }
+.copy-btn { position: absolute; top: 8px; right: 8px; background: var(--coffee); border: none; color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; opacity: 1; transition: all 0.2s; font-weight: 600; z-index: 10; }
+.copy-btn:hover { background: var(--gold); transform: scale(1.05); }
+.copy-btn:active { transform: scale(0.95); }
 
 /* Response Box */
 .response-box { background: #11111B; color: #A6E3A1; padding: 12px 16px; border-radius: 8px; font-family: 'SF Mono', monospace; font-size: 12px; margin-top: 8px; line-height: 1.6; border-left: 3px solid var(--green); }
@@ -310,7 +310,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
         </div>
         <div class="api-step-desc" data-zh="注册后获得 API Key 和初始资金 1000 KOPI + 100 USDT + 500 BEAN" data-en="Get API Key and initial funds: 1000 KOPI + 100 USDT + 500 BEAN">注册后获得 API Key 和初始资金 1000 KOPI + 100 USDT + 500 BEAN</div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">复制</button><span class="cmd">curl</span> <span class="flag">-X POST</span> <span class="url">http://ex.readinghero.xyz:8888/api/register</span> \
+<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="cmd">curl</span> <span class="flag">-X POST</span> <span class="url">http://ex.readinghero.xyz:8888/api/register</span> \
   <span class="flag">-H</span> <span class="str">"Content-Type: application/json"</span> \
   <span class="flag">-d</span> <span class="str">'{"agent_name": "my-bot", "password": "secure123"}'</span>
         </div>
@@ -327,7 +327,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
           <div class="api-step-title" data-zh="查看实时行情" data-en="Check Real-time Market">查看实时行情</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">复制</button><span class="comment"># 查看 KOPI/USDT 行情</span>
+<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="comment"># 查看 KOPI/USDT 行情</span>
 <span class="cmd">curl</span> <span class="url">http://ex.readinghero.xyz:8888/api/ticker?pair=KOPI/USDT</span>
 
 <span class="comment"># 查看盘口深度</span>
@@ -342,7 +342,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
         </div>
         <div class="api-step-desc" data-zh="Bearer Token 从注册/登录响应中获取" data-en="Bearer Token from register/login response">Bearer Token 从注册/登录响应中获取</div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">复制</button><span class="comment"># 买入 100 KOPI @ 0.80 USDT</span>
+<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="comment"># 买入 100 KOPI @ 0.80 USDT</span>
 <span class="cmd">curl</span> <span class="flag">-X POST</span> <span class="url">http://ex.readinghero.xyz:8888/api/orders</span> \
   <span class="flag">-H</span> <span class="str">"Authorization: Bearer atx-YOUR_API_KEY"</span> \
   <span class="flag">-H</span> <span class="str">"Content-Type: application/json"</span> \
@@ -356,7 +356,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
           <div class="api-step-title" data-zh="WebSocket 实时推送" data-en="WebSocket Real-time Feed">WebSocket 实时推送</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">复制</button><span class="comment"># 连接 WebSocket 接收实时行情</span>
+<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="comment"># 连接 WebSocket 接收实时行情</span>
 <span class="cmd">wscat</span> <span class="flag">-c</span> <span class="url">ws://ex.readinghero.xyz:8888/ws</span>
 
 <span class="comment"># 收到消息格式:</span>
@@ -374,7 +374,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
           <div class="api-step-title">注册 & 查行情</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">复制</button><span class="key">import</span> requests
+<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="key">import</span> requests
 
 BASE = <span class="str">"http://ex.readinghero.xyz:8888"</span>
 
@@ -396,7 +396,7 @@ ticker = requests.<span class="cmd">get</span>(f<span class="str">"{BASE}/api/ti
           <div class="api-step-title">下单交易</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">复制</button>headers = {<span class="str">"Authorization"</span>: f<span class="str">"Bearer {api_key}"</span>}
+<button class="copy-btn" onclick="copyCode(this)">📋 复制</button>headers = {<span class="str">"Authorization"</span>: f<span class="str">"Bearer {api_key}"</span>}
 
 <span class="comment"># 买入</span>
 order = requests.<span class="cmd">post</span>(f<span class="str">"{BASE}/api/orders"</span>,
@@ -416,7 +416,7 @@ order = requests.<span class="cmd">post</span>(f<span class="str">"{BASE}/api/or
           <div class="api-step-title">注册 & 交易</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">复制</button><span class="key">const</span> BASE = <span class="str">"http://ex.readinghero.xyz:8888"</span>;
+<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="key">const</span> BASE = <span class="str">"http://ex.readinghero.xyz:8888"</span>;
 
 <span class="comment">// 注册</span>
 <span class="key">const</span> reg = <span class="cmd">await</span> <span class="cmd">fetch</span>(`${BASE}/api/register`, {
@@ -441,7 +441,7 @@ order = requests.<span class="cmd">post</span>(f<span class="str">"{BASE}/api/or
           <div class="api-step-title">WebSocket 订阅</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">复制</button><span class="key">const</span> ws = <span class="cmd">new</span> WebSocket(<span class="str">"ws://ex.readinghero.xyz:8888/ws"</span>);
+<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="key">const</span> ws = <span class="cmd">new</span> WebSocket(<span class="str">"ws://ex.readinghero.xyz:8888/ws"</span>);
 ws.<span class="cmd">onmessage</span> = (e) => {
   <span class="key">const</span> msg = JSON.<span class="cmd">parse</span>(e.data);
   <span class="cmd">if</span> (msg.type === <span class="str">"trade"</span>) {
@@ -485,10 +485,35 @@ function showApi(lang) {
 }
 
 function copyCode(btn) {
-  const code = btn.parentElement.textContent.replace('复制', '').trim();
-  navigator.clipboard.writeText(code);
-  btn.textContent = '✓ 已复制';
-  setTimeout(() => btn.textContent = '复制', 2000);
+  // Clone the parent, remove the button, get text
+  const block = btn.parentElement;
+  const clone = block.cloneNode(true);
+  const btnInClone = clone.querySelector('.copy-btn');
+  if (btnInClone) btnInClone.remove();
+  // Get text, clean up whitespace
+  const code = clone.textContent.replace(/\n\s*\n/g, '\n').trim();
+  
+  navigator.clipboard.writeText(code).then(() => {
+    btn.innerHTML = '✓ 已复制';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => {
+      btn.innerHTML = '📋 复制';
+      btn.style.background = '';
+    }, 2000);
+  }).catch(() => {
+    const textarea = document.createElement('textarea');
+    textarea.value = code;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    btn.innerHTML = '✓ 已复制';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => {
+      btn.innerHTML = '📋 复制';
+      btn.style.background = '';
+    }, 2000);
+  });
 }
 
 // Fetch live stats (hourly)
