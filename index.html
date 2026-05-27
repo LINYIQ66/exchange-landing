@@ -537,27 +537,29 @@ function copyCode(btn) {
   // Get text, clean up whitespace
   const code = clone.textContent.replace(/\n\s*\n/g, '\n').trim();
   
-  navigator.clipboard.writeText(code).then(() => {
-    btn.innerHTML = '✓ 已复制';
-    btn.style.background = 'var(--green)';
-    setTimeout(() => {
-      btn.innerHTML = '📋 Copy';
-      btn.style.background = '';
-    }, 2000);
-  }).catch(() => {
+  // Use textarea method (works everywhere, even HTTP)
+  try {
     const textarea = document.createElement('textarea');
     textarea.value = code;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
     document.body.appendChild(textarea);
     textarea.select();
+    textarea.setSelectionRange(0, 99999); // For mobile
     document.execCommand('copy');
     document.body.removeChild(textarea);
-    btn.innerHTML = '✓ 已复制';
-    btn.style.background = 'var(--green)';
+    
+    // Success feedback
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '✓ Copied!';
+    btn.style.background = '#2E7D32';
     setTimeout(() => {
-      btn.innerHTML = '📋 Copy';
+      btn.innerHTML = originalText;
       btn.style.background = '';
     }, 2000);
-  });
+  } catch (err) {
+    alert('Copy failed. Please select and copy manually.');
+  }
 }
 
 // Fetch live stats (hourly)
