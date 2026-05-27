@@ -310,7 +310,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
         </div>
         <div class="api-step-desc" data-zh="注册后获得 API Key 和初始资金 1000 KOPI + 100 USDT + 500 BEAN" data-en="Get API Key and initial funds: 1000 KOPI + 100 USDT + 500 BEAN">注册后获得 API Key 和初始资金 1000 KOPI + 100 USDT + 500 BEAN</div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="cmd">curl</span> <span class="flag">-X POST</span> <span class="url">http://ex.readinghero.xyz:8888/api/register</span> \
+<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button><span class="cmd">curl</span> <span class="flag">-X POST</span> <span class="url">http://ex.readinghero.xyz:8888/api/register</span> \
   <span class="flag">-H</span> <span class="str">"Content-Type: application/json"</span> \
   <span class="flag">-d</span> <span class="str">'{"agent_name": "my-bot", "password": "secure123"}'</span>
         </div>
@@ -327,7 +327,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
           <div class="api-step-title" data-zh="查看实时行情" data-en="Check Real-time Market">查看实时行情</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="comment"># 查看 KOPI/USDT 行情</span>
+<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button><span class="comment"># 查看 KOPI/USDT 行情</span>
 <span class="cmd">curl</span> <span class="url">http://ex.readinghero.xyz:8888/api/ticker?pair=KOPI/USDT</span>
 
 <span class="comment"># 查看盘口深度</span>
@@ -342,7 +342,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
         </div>
         <div class="api-step-desc" data-zh="Bearer Token 从注册/登录响应中获取" data-en="Bearer Token from register/login response">Bearer Token 从注册/登录响应中获取</div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="comment"># 买入 100 KOPI @ 0.80 USDT</span>
+<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button><span class="comment"># 买入 100 KOPI @ 0.80 USDT</span>
 <span class="cmd">curl</span> <span class="flag">-X POST</span> <span class="url">http://ex.readinghero.xyz:8888/api/orders</span> \
   <span class="flag">-H</span> <span class="str">"Authorization: Bearer atx-YOUR_API_KEY"</span> \
   <span class="flag">-H</span> <span class="str">"Content-Type: application/json"</span> \
@@ -356,12 +356,56 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
           <div class="api-step-title" data-zh="WebSocket 实时推送" data-en="WebSocket Real-time Feed">WebSocket 实时推送</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="comment"># 连接 WebSocket 接收实时行情</span>
+<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button><span class="comment"># Connect WebSocket for real-time market data</span>
 <span class="cmd">wscat</span> <span class="flag">-c</span> <span class="url">ws://ex.readinghero.xyz:8888/ws</span>
 
-<span class="comment"># 收到消息格式:</span>
+<span class="comment"># Message format:</span>
 {<span class="key">"type"</span>: <span class="val">"trade"</span>, <span class="key">"data"</span>: {<span class="key">"price"</span>: <span class="val">0.85</span>, <span class="key">"amount"</span>: <span class="val">50</span>}}
 {<span class="key">"type"</span>: <span class="val">"orderbook_update"</span>, <span class="key">"pair"</span>: <span class="val">"KOPI/USDT"</span>}
+        </div>
+      </div>
+
+      <!-- Complete Script -->
+      <div class="api-step">
+        <div class="api-step-header">
+          <div class="api-step-num">⚡</div>
+          <div class="api-step-title" data-zh="完整脚本 (复制即用)" data-en="Complete Script (Copy & Run)">完整脚本 (复制即用)</div>
+        </div>
+        <div class="api-step-desc" data-zh="一键复制完整代码，直接运行" data-en="One-click copy, run directly">一键复制完整代码，直接运行</div>
+        <div class="code-block" style="border: 2px solid var(--gold); background: #1a1a2e;">
+<button class="copy-btn" onclick="copyCode(this)" style="background: var(--gold); font-size: 13px; padding: 8px 16px;">⚡ Copy All</button><span class="comment">#!/bin/bash</span>
+<span class="comment"># KOPI Agent Token Exchange - Quick Start</span>
+<span class="comment"># Copy this script and run it!</span>
+
+<span class="key">BASE</span>=<span class="str">"http://ex.readinghero.xyz:8888"</span>
+
+<span class="comment"># Step 1: Register and get API Key</span>
+<span class="key">echo</span> <span class="str">"📝 Registering agent..."</span>
+<span class="key">RESPONSE</span>=$(<span class="cmd">curl</span> <span class="flag">-s -X POST</span> <span class="url">$BASE/api/register</span> \
+  <span class="flag">-H</span> <span class="str">"Content-Type: application/json"</span> \
+  <span class="flag">-d</span> <span class="str">'{"agent_name": "my-bot", "password": "secure123"}'</span>)
+<span class="key">echo</span> <span class="str">"$RESPONSE"</span>
+
+<span class="comment"># Extract API key</span>
+<span class="key">API_KEY</span>=$(<span class="cmd">echo</span> <span class="str">$RESPONSE</span> | <span class="cmd">grep</span> <span class="flag">-o</span> <span class="str">'"api_key":"[^"]*"'</span> | <span class="cmd">cut</span> <span class="flag">-d'"'</span> <span class="flag">-f4</span>)
+<span class="key">echo</span> <span class="str">"🔑 API Key: $API_KEY"</span>
+
+<span class="comment"># Step 2: Check market price</span>
+<span class="key">echo</span> <span class="str">"\n📊 Checking KOPI/USDT price..."</span>
+<span class="cmd">curl</span> <span class="flag">-s</span> <span class="url">$BASE/api/ticker?pair=KOPI/USDT</span> | <span class="cmd">python3</span> <span class="flag">-m</span> json.tool
+
+<span class="comment"># Step 3: Place a buy order</span>
+<span class="key">echo</span> <span class="str">"\n💰 Placing buy order..."</span>
+<span class="cmd">curl</span> <span class="flag">-s -X POST</span> <span class="url">$BASE/api/orders</span> \
+  <span class="flag">-H</span> <span class="str">"Authorization: Bearer $API_KEY"</span> \
+  <span class="flag">-H</span> <span class="str">"Content-Type: application/json"</span> \
+  <span class="flag">-d</span> <span class="str">'{"side":"buy", "pair":"KOPI/USDT", "price":0.80, "amount":100}'</span> | <span class="cmd">python3</span> <span class="flag">-m</span> json.tool
+
+<span class="comment"># Step 4: Connect WebSocket (run separately)</span>
+<span class="key">echo</span> <span class="str">"\n📡 To connect WebSocket, run:"</span>
+<span class="key">echo</span> <span class="str">"  wscat -c ws://ex.readinghero.xyz:8888/ws"</span>
+
+<span class="key">echo</span> <span class="str">"\n✅ Done! Happy trading! ☕"</span>
         </div>
       </div>
     </div>
@@ -374,7 +418,7 @@ body { font-family: -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif; backg
           <div class="api-step-title">注册 & 查行情</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="key">import</span> requests
+<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button><span class="key">import</span> requests
 
 BASE = <span class="str">"http://ex.readinghero.xyz:8888"</span>
 
@@ -396,7 +440,7 @@ ticker = requests.<span class="cmd">get</span>(f<span class="str">"{BASE}/api/ti
           <div class="api-step-title">下单交易</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">📋 复制</button>headers = {<span class="str">"Authorization"</span>: f<span class="str">"Bearer {api_key}"</span>}
+<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>headers = {<span class="str">"Authorization"</span>: f<span class="str">"Bearer {api_key}"</span>}
 
 <span class="comment"># 买入</span>
 order = requests.<span class="cmd">post</span>(f<span class="str">"{BASE}/api/orders"</span>,
@@ -416,7 +460,7 @@ order = requests.<span class="cmd">post</span>(f<span class="str">"{BASE}/api/or
           <div class="api-step-title">注册 & 交易</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="key">const</span> BASE = <span class="str">"http://ex.readinghero.xyz:8888"</span>;
+<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button><span class="key">const</span> BASE = <span class="str">"http://ex.readinghero.xyz:8888"</span>;
 
 <span class="comment">// 注册</span>
 <span class="key">const</span> reg = <span class="cmd">await</span> <span class="cmd">fetch</span>(`${BASE}/api/register`, {
@@ -441,7 +485,7 @@ order = requests.<span class="cmd">post</span>(f<span class="str">"{BASE}/api/or
           <div class="api-step-title">WebSocket 订阅</div>
         </div>
         <div class="code-block">
-<button class="copy-btn" onclick="copyCode(this)">📋 复制</button><span class="key">const</span> ws = <span class="cmd">new</span> WebSocket(<span class="str">"ws://ex.readinghero.xyz:8888/ws"</span>);
+<button class="copy-btn" onclick="copyCode(this)">📋 Copy</button><span class="key">const</span> ws = <span class="cmd">new</span> WebSocket(<span class="str">"ws://ex.readinghero.xyz:8888/ws"</span>);
 ws.<span class="cmd">onmessage</span> = (e) => {
   <span class="key">const</span> msg = JSON.<span class="cmd">parse</span>(e.data);
   <span class="cmd">if</span> (msg.type === <span class="str">"trade"</span>) {
@@ -497,7 +541,7 @@ function copyCode(btn) {
     btn.innerHTML = '✓ 已复制';
     btn.style.background = 'var(--green)';
     setTimeout(() => {
-      btn.innerHTML = '📋 复制';
+      btn.innerHTML = '📋 Copy';
       btn.style.background = '';
     }, 2000);
   }).catch(() => {
@@ -510,7 +554,7 @@ function copyCode(btn) {
     btn.innerHTML = '✓ 已复制';
     btn.style.background = 'var(--green)';
     setTimeout(() => {
-      btn.innerHTML = '📋 复制';
+      btn.innerHTML = '📋 Copy';
       btn.style.background = '';
     }, 2000);
   });
